@@ -30,6 +30,9 @@ This repository is a small collection of ZenScript mixins I made for Minecraft F
 - `SigilTableJEITransfer.zs`
   - Adds JEI recipe transfer and a click area for Bewitchment's Sigil Table GUI. This means you will see the "+" button in JEI when viewing Sigil Table recipes, and clicking it will transfer the ingredients into the Sigil Table GUI. Clicking the arrow area in the Sigil Table GUI will open JEI to the Sigil Table recipes.
 
+- `ApiaryBonk.zs` + `ApiaryBonkTooltip.zs`
+  - Hit an Industrial Apiary with a stick to refresh the flower detection. As the detection is somewhat broken and can take upwards of dozens of minutes to update, this provides a quick way to force it to recheck the flowers around it.
+
 ## License
 
 Use and adapt as you like. If you redistribute, a short credit is appreciated.
