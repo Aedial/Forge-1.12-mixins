@@ -64,9 +64,9 @@ zenClass AstralRelayHalo_RenderTranslucentItem {
 
     #mixin Inject
     #{
-    # method: "renderTranslucentItem",
-    # at: { value: "HEAD" },
-    # cancellable: true
+    #   method: "renderTranslucentItem",
+    #   at: { value: "HEAD" },
+    #   cancellable: true
     #}
     function renderTranslucentItem(stack as ItemStack, x as double, y as double, z as double, partialTicks as float, ci as CallbackInfo) as void {
         // Tunables

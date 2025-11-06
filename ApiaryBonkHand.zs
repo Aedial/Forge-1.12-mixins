@@ -21,14 +21,14 @@ zenClass ApiaryBonkMixin {
     function func_180649_a(worldIn as World, pos as BlockPos, playerIn as EntityPlayer) as void {
 
         val heldItem as ItemStack = playerIn.getHeldItem(EnumHand.MAIN_HAND);
-        if (!worldIn.isRemote && heldItem.getItem().getRegistryName().toString() == "minecraft:stick") {
+        if (!worldIn.isRemote && heldItem.isEmpty()) {
             // Bonk action: refresh apiary
             val tile as TileApiary = worldIn.getTileEntity(pos) as TileApiary;
             val logic as IBeekeepingLogic = tile.getBeekeepingLogic();
             logic.clearCachedValues();
 
             // Chat message
-            val message as TextComponentString = TextComponentString("§aBonk! Apiary flowers refreshed.");
+            val message as TextComponentString = TextComponentString("§aClank! Apiary flowers refreshed.");
             playerIn.sendStatusMessage(message, true);
         }
     }

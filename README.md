@@ -33,6 +33,12 @@ This repository is a small collection of ZenScript mixins I made for Minecraft F
 - `ApiaryBonk.zs` + `ApiaryBonkTooltip.zs`
   - Hit an Industrial Apiary with a stick to refresh the flower detection. As the detection is somewhat broken and can take upwards of dozens of minutes to update, this provides a quick way to force it to recheck the flowers around it.
 
+- `ApiaryBonkHand.zs` + `ApiaryBonkHandTooltip.zs`
+  - Same as above, but instead of using a stick, you can simply hit the apiary with an empty hand.
+
+- `PerkGemDelayedRoll.zs`
+  - Changes the behavior of Perk Gems so that they do not roll their perk immediately once in inventory. Instead, right-clicking the gem will roll the perk. This prevents accidental perk rolls when picking up or moving the gem in inventory.
+
 ## License
 
 Use and adapt as you like. If you redistribute, a short credit is appreciated.
