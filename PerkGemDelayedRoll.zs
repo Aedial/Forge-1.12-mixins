@@ -15,7 +15,7 @@ import native.hellfirepvp.astralsorcery.common.item.gem.GemAttributeHelper;
 
 import mixin.CallbackInfo;
 
-// Disable automatic gem rolling on tick; we'll roll on right-click instead.
+// Disable automatic gem rolling on tick; we'll roll on right-click instead
 #mixin {targets: "hellfirepvp.astralsorcery.common.item.gem.ItemPerkGem"}
 zenClass PerkGemDelayedRollMixin {
     // SRG: Item#onUpdate -> func_77663_a
@@ -42,16 +42,16 @@ zenClass PerkGemDelayedRollMixin {
 
             GemAttributeHelper.rollGem(gem);
 
+            // Decrease the held stack size by 1 and update player's held item
+            stack.shrink(1);
+            player.setHeldItem(hand, stack.isEmpty() || stack.getCount() <= 0 ? ItemStack.EMPTY : stack);
+
             // Try to give the rolled gem to the player. If inventory full, spawn it in the world
             val added as bool = player.inventory.addItemStackToInventory(gem);
             if (!added) {
                 val ei = EntityItem(world, player.posX, player.posY + 0.5, player.posZ, gem);
                 world.spawnEntity(ei);
             }
-
-            // Decrease the held stack size by 1 and update player's held item
-            stack.shrink(1);
-            player.setHeldItem(hand, stack.isEmpty() || stack.getCount() <= 0 ? ItemStack.EMPTY : stack);
 
             return ActionResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
         }
