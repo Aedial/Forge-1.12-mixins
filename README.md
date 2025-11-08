@@ -42,6 +42,9 @@ This repository is a small collection of ZenScript mixins I made for Minecraft F
 - `RollingMachinePreventLockedOverflowMixin.zs`
   - Prevents inserting items into empty slots of a locked Rolling Machine, to avoid overflow into non-recipe slots.
 
+- `AllowQueenImprinting.zs`
+  - Allow putting a Queen into the Genetic Imprinter, instead of only Princess or Drone. This means you do not need to kill the Queen and imprint the Princess and Drone anymore to update the her genetics (for example, right out of the Mutatron).
+
 ## License
 
 Use and adapt as you like. If you redistribute, a short credit is appreciated.
