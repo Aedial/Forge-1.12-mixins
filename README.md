@@ -12,22 +12,25 @@ This repository is a small collection of ZenScript mixins I made for Minecraft F
 1. Place the `.zs` files under your scripts folder, for example:
 
    scripts/mixin/
-   - AstralRelayHalo.zs
-   - AstralRelayRenderFix.zs
-   - SigilTableJEITransfer.zs
+   - AstralRelayHaloClient.zs
+   - AstralRelayRenderFixClient.zs
+   - AstralRelayRenderFixServer.zs
+   - SigilTableJEITransferClient.zs
+
+If you are using a dedicated server, ensure the client-only scripts are not included on the server side. Scrips that are not named *Client.zs* or *Server.zs* are considered Server scripts and can be included on both sides.
 
 2. Ensure Zen Utils (or your chosen mixin loader) is enabled so ZenScript mixins are loaded at startup.
 3. Start Minecraft and verify the changes in the relevant UIs/tiles (see file descriptions for what to check).
 
 ## Files and what they do
 
-- `AstralRelayHalo.zs`
+- `AstralRelayHaloClient.zs`
   - Adds a translucent, animated golden halo rendered around the Spectral Relay for next item in an Iridescent Altar's crafting task. As the ghost item can be hard to differentiate from the relay's held item, this visual aid helps indicate which relay is the right one.
 
-- `AstralRelayRenderFix.zs`
+- `AstralRelayRenderFixClient.zs` + `AstralRelayRenderFixServer.zs`
   - Replaces the TESR (Tile Entity Special Renderer) render for Spectral Relays so items that use TEISR-style rendering (for example DivineRPG statues) render correctly.
 
-- `SigilTableJEITransfer.zs`
+- `SigilTableJEITransferClient.zs`
   - Adds JEI recipe transfer and a click area for Bewitchment's Sigil Table GUI. This means you will see the "+" button in JEI when viewing Sigil Table recipes, and clicking it will transfer the ingredients into the Sigil Table GUI. Clicking the arrow area in the Sigil Table GUI will open JEI to the Sigil Table recipes.
 
 - `ApiaryBonk.zs` + `ApiaryBonkTooltip.zs`
