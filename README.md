@@ -14,10 +14,10 @@ This repository is a small collection of ZenScript mixins I made for Minecraft F
    scripts/mixin/
    - AstralRelayHaloClient.zs
    - AstralRelayRenderFixClient.zs
-   - AstralRelayRenderFixServer.zs
+   - AstralRelayRenderFixCommon.zs
    - SigilTableJEITransferClient.zs
 
-If you are using a dedicated server, ensure the client-only scripts are not included on the server side. Scrips that are not named *Client.zs* or *Server.zs* are considered Server scripts and can be included on both sides.
+If you are using a dedicated server, ensure the client-only scripts (*Client.zs*) are not included on the server side. Scripts that are not named *Client.zs* or *Common.zs* are considered Common scripts and should be included on both sides.
 
 2. Ensure Zen Utils (or your chosen mixin loader) is enabled so ZenScript mixins are loaded at startup.
 3. Start Minecraft and verify the changes in the relevant UIs/tiles (see file descriptions for what to check).
@@ -27,7 +27,7 @@ If you are using a dedicated server, ensure the client-only scripts are not incl
 - `AstralRelayHaloClient.zs`
   - Adds a translucent, animated golden halo rendered around the Spectral Relay for next item in an Iridescent Altar's crafting task. As the ghost item can be hard to differentiate from the relay's held item, this visual aid helps indicate which relay is the right one.
 
-- `AstralRelayRenderFixClient.zs` + `AstralRelayRenderFixServer.zs`
+- `AstralRelayRenderFixClient.zs` + `AstralRelayRenderFixCommon.zs`
   - Replaces the TESR (Tile Entity Special Renderer) render for Spectral Relays so items that use TEISR-style rendering (for example DivineRPG statues) render correctly.
 
 - `SigilTableJEITransferClient.zs`
@@ -37,7 +37,7 @@ If you are using a dedicated server, ensure the client-only scripts are not incl
   - Hit an Industrial Apiary with a stick to refresh the flower detection. As the detection is somewhat broken and can take upwards of dozens of minutes to update, this provides a quick way to force it to recheck the flowers around it.
 
 - `ApiaryBonkHand.zs` + `ApiaryBonkHandTooltip.zs`
-  - Same as above, but instead of using a stick, you can simply hit the apiary with an empty hand. Incompatible with `ApiaryBonk.zs`, as both modify the same method.
+  - Same as above, but instead of using a stick, you can simply hit the apiary with an empty hand. :warning: Incompatible with `ApiaryBonk.zs`, as both modify the same method (nothing will break, but one will override the other).
 
 - `PerkGemDelayedRoll.zs`
   - Changes the behavior of Perk Gems so that they do not roll their perk immediately once in inventory. Instead, right-clicking the gem will roll the perk. This prevents accidental perk rolls when picking up or moving the gem in inventory.
@@ -47,6 +47,9 @@ If you are using a dedicated server, ensure the client-only scripts are not incl
 
 - `AllowQueenImprinting.zs`
   - Allow putting a Queen into the Genetic Imprinter, instead of only Princess or Drone. This means you do not need to kill the Queen and imprint the Princess and Drone anymore to update the her genetics (for example, right out of the Mutatron).
+
+- `AbyssmalRitualChunkLoadFix.zs`
+  - Fixes the ritual altar from AbyssalCraft loading partially when spread across chunk boundaries (rendering it non-functional). Do note this is unnecessary for AbyssalCraft versions 1.10.5/2.0.0-ALPHA-5 and later, as it straight-up prevents making ritual altars that span chunk boundaries.
 
 ## License
 
