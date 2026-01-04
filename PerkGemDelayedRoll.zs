@@ -1,7 +1,6 @@
 #modloaded astralsorcery
 #loader mixin
 
-import native.net.minecraft.world.World;
 import native.net.minecraft.entity.Entity;
 import native.net.minecraft.entity.item.EntityItem;
 import native.net.minecraft.entity.player.EntityPlayer;
@@ -9,6 +8,7 @@ import native.net.minecraft.item.ItemStack;
 import native.net.minecraft.util.EnumHand;
 import native.net.minecraft.util.ActionResult;
 import native.net.minecraft.util.EnumActionResult;
+import native.net.minecraft.world.World;
 
 import native.hellfirepvp.astralsorcery.common.item.gem.ItemPerkGem;
 import native.hellfirepvp.astralsorcery.common.item.gem.GemAttributeHelper;
@@ -28,6 +28,8 @@ zenClass PerkGemDelayedRollMixin {
     function cancelOnUpdate(stack as ItemStack, worldIn as World, entityIn as Entity, itemSlot as int, isSelected as bool, ci as CallbackInfo) as void {
         ci.cancel();
     }
+
+    // cannot use addInformation() because ZenScript converts List to IAny[], breaking signature
 
     // SRG: Item#onItemRightClick -> func_77659_a (not mixin, as inherited)
     function func_77659_a(world as World, player as EntityPlayer, hand as EnumHand) as ActionResult {
