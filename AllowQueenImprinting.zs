@@ -52,7 +52,7 @@ zenClass AllowQueenImprinting {
         // getType(ItemStack) fails because of ZS, so we use isMated and isDrone as Queen detection
         if (individual != null && BeeManager.beeRoot.isMated(bee) && !BeeManager.beeRoot.isDrone(bee)) {
             val tag as NBTTagCompound = bee.getTagCompound();
-            tag.setTag("Mate", tag.getCompoundTag("Genome"));
+            tag.setTag("Mate", tag.getCompoundTag("Genome").copy());
         }
     }
 }
