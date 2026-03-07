@@ -7,7 +7,12 @@ This repository is a small collection of ZenScript mixins I made for Minecraft F
 - Zen Utils (mixin loader) — these scripts use `#loader mixin` and ZenScript-style mixin declarations, so the mixin loader provided by Zen Utils (or an equivalent ZenScript mixin loader) must be available in the environment.
 - The mods these mixins target should be present (examples below refer to Astral Sorcery and Bewitchment), but the scripts will just not apply if they are missing.
 
-## Installation / Steps
+## Installation
+
+### NOTE
+If you are using a dedicated server, you **do not need** to separate the client-only scripts (Client.zs) from the common scripts (Common.zs). They come with the appropriate side checks, so including them on the server will not cause issues. The split is purely for bookkeeping purposes.
+
+### Steps 
 
 1. Place the `.zs` files under your scripts folder, for example:
 
@@ -17,9 +22,7 @@ This repository is a small collection of ZenScript mixins I made for Minecraft F
    - AstralRelayRenderFixCommon.zs
    - SigilTableJEITransferClient.zs
 
-If you are using a dedicated server, ensure the client-only scripts (*Client.zs*) are not included on the server side. Scripts that are not named *Client.zs* or *Common.zs* are considered Common scripts and should be included on both sides.
-
-2. Ensure Zen Utils (or your chosen mixin loader) is enabled so ZenScript mixins are loaded at startup.
+2. Ensure Zen Utils (or your chosen ZenScript mixin loader) is enabled so ZenScript mixins are loaded at startup.
 3. Start Minecraft and verify the changes in the relevant UIs/tiles (see file descriptions for what to check).
 
 ## Files and what they do
@@ -37,9 +40,9 @@ If you are using a dedicated server, ensure the client-only scripts (*Client.zs*
   - Hit an Industrial Apiary with a stick to refresh the flower detection. As the detection is somewhat broken and can take upwards of dozens of minutes to update, this provides a quick way to force it to recheck the flowers around it.
 
 - `ApiaryBonkHand.zs` + `ApiaryBonkHandTooltip.zs`
-  - Same as above, but instead of using a stick, you can simply hit the apiary with an empty hand. :warning: Incompatible with `ApiaryBonk.zs`, as both modify the same method (nothing will break, but one will override the other).
+  - Same as above, but instead of using a stick, you can simply hit the apiary with an empty hand. :warning: Incompatible with `ApiaryBonk.zs`, as both modify the same method (nothing will break, but one will override the other, causing confusion).
 
-- `PerkGemDelayedRoll.zs`
+- `PerkGemDelayedRoll.zs` + `PerkGemDelayedRollTooltip.zs`
   - Changes the behavior of Perk Gems so that they do not roll their perk immediately once in inventory. Instead, right-clicking the gem will roll the perk. This prevents accidental perk rolls when picking up or moving the gem in inventory.
 
 - `RollingMachinePreventLockedOverflowMixin.zs`
@@ -49,10 +52,10 @@ If you are using a dedicated server, ensure the client-only scripts (*Client.zs*
   - Allow putting a Queen into the Genetic Imprinter, instead of only Princess or Drone. This means you do not need to kill the Queen and imprint the Princess and Drone anymore to update the her genetics (for example, right out of the Mutatron).
 
 - `AbyssmalRitualChunkLoadFix.zs`
-  - Fixes the ritual altar from AbyssalCraft loading partially when spread across chunk boundaries (rendering it non-functional). Do note this is unnecessary for AbyssalCraft versions 1.10.5/2.0.0-ALPHA-5 and later, as it straight-up prevents making ritual altars that span chunk boundaries.
+  - Fixes the ritual altar from AbyssalCraft loading partially when spread across chunk boundaries (rendering it non-functional). **NOTE:** This is unnecessary for AbyssalCraft versions 1.10.5/2.0.0-ALPHA-5 and later, as they straight-up prevent making ritual altars that span chunk boundaries (I guess that's one way to solve the problem, albeit a bit awkward).
 
 - `SackDropRedirect.zs`
-  - Change the behavior of the Sack of Holding from dropping on the ground to landing in the player inventory. Due to how creative works, you will lose the sack+container if your inventory is full (no space available).
+  - Change the behavior of the Sack of Holding from "dropping on the ground" to "landing in the player inventory". Due to how creative works, you will lose the Container (in Sack) if your inventory is full (no space available).
 
 ## License
 
