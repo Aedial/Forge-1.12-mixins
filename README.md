@@ -51,6 +51,9 @@ If you are using a dedicated server, ensure the client-only scripts (*Client.zs*
 - `AbyssmalRitualChunkLoadFix.zs`
   - Fixes the ritual altar from AbyssalCraft loading partially when spread across chunk boundaries (rendering it non-functional). Do note this is unnecessary for AbyssalCraft versions 1.10.5/2.0.0-ALPHA-5 and later, as it straight-up prevents making ritual altars that span chunk boundaries.
 
+- `SackDropRedirect.zs`
+  - Change the behavior of the Sack of Holding from dropping on the ground to landing in the player inventory. Due to how creative works, you will lose the sack+container if your inventory is full (no space available).
+
 ## License
 
 Use and adapt as you like. If you redistribute, a short credit is appreciated.
